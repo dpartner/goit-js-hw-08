@@ -12,4 +12,4 @@ player.on('timeupdate', throttle(onCurrentTime, 1000));
 function onCurrentTime(e) {
   localStorage.setItem('videoplayer-current-time', JSON.stringify(e.seconds));
 }
-// for update
+// for update 2
