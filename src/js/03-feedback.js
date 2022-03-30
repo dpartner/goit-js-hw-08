@@ -41,7 +41,8 @@ function onSubmit(e) {
     console.log('Ваш отзыв отправлен', currentValue);
     e.currentTarget.reset();
     localStorage.removeItem('feedback-form-state');
+    return (currentValue = {});
   } else {
-    console.log('❌ заполните все поля, для отправки отзыва');
+    alert('❌ заполните все поля, для отправки отзыва');
   }
 }
