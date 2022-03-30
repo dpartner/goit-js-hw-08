@@ -24,8 +24,12 @@ function onCurrentValueOfInput() {
   const currentValue = JSON.parse(localStorage.getItem('feedback-form-state'));
 
   if (currentValue) {
-    form.email.value = currentValue.email;
-    form.message.value = currentValue.message;
+    if (currentValue.email) {
+      form.email.value = currentValue.email;
+    }
+    if (currentValue.message) {
+      form.message.value = currentValue.message;
+    }
     return currentValue;
   }
   return {};
@@ -33,6 +37,11 @@ function onCurrentValueOfInput() {
 
 function onSubmit(e) {
   e.preventDefault();
-  e.currentTarget.reset();
-  console.log('Ваш отзыв отправлен', currentValue);
+  if (form.email.value && form.message.value) {
+    console.log('Ваш отзыв отправлен', currentValue);
+    e.currentTarget.reset();
+    localStorage.removeItem('feedback-form-state');
+  } else {
+    console.log('❌ заполните все поля, для отправки отзыва');
+  }
 }
